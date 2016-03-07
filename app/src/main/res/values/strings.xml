@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SampleSlider</string>
+    <string name="redbutton">Red</string>
+    <string name="bluebutton">Blue</string>
+    <string name="greenbutton">Green</string>
+    <string name="textview1">TextView1</string>
+    <string name="textview2">TextView2</string>
+    <string name="textview3">TextView3</string>
+    <string name="itemtext1">Item1</string>
+    <string name="itemtext2">Item2</string>
+    <string name="itemtext3">Item3</string>
+    <string name="itemtext4">Item4</string>
+    <string name="itemtext5">Item5</string>
+</resources>
