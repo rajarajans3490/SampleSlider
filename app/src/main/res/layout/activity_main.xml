@@ -25,49 +25,54 @@
                  >
                 <TextView
                     android:id="@+id/itemtext1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/itemtext1"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="30sp"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="25dp"/>
                 <TextView
                     android:id="@+id/itemtext2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/itemtext2"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="30sp"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="25dp"/>
                 <TextView
                     android:id="@+id/itemtext3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/itemtext3"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="30sp"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="25dp"/>
                 <TextView
                     android:id="@+id/itemtext4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/itemtext4"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="30sp"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="25dp"/>
                 <TextView
                     android:id="@+id/itemtext5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/itemtext5"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="30sp"
-                    android:layout_margin="20dp"/>
+                    android:layout_margin="25dp"/>
                 </LinearLayout>
                 </HorizontalScrollView>
         </LinearLayout>
@@ -169,7 +174,6 @@
 
 
             <Button
-
             android:id="@+id/Button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -179,7 +183,6 @@
             android:layout_alignParentStart="true">
             </Button>
             <Button
-
             android:id="@+id/Button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -3,7 +3,6 @@ package com.android.test.sampleslider;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class ViewPageFragment1 extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplication(), "Fragment 1 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplication(), R.string.fragment1, Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 
 public class SampleSliderActivity extends AppCompatActivity implements OnClickListener,ViewPager.OnPageChangeListener {
@@ -34,7 +31,10 @@ public class SampleSliderActivity extends AppCompatActivity implements OnClickLi
     private ViewPager mViewPager = null;
     private String TAG = "SampleSliderActivity";
     private CustomFragmentPagerAdapter mCustomFragmentPagerAdapter = null;
-    private int pagecount;
+    private int mPageCount;
+    private int mImagePadding;
+    private int mMargin;
+    private int mNoMargin;
     private ImageView[] mImages = null;
 
     public SampleSliderActivity (){
@@ -101,31 +101,44 @@ public class SampleSliderActivity extends AppCompatActivity implements OnClickLi
             case R.id.itemtext5:
                 mTextview4.setText(R.string.itemtext5);
                 break;
+            default:
+                break;
         }
     }
 
-private void setPageIndicators()
-    {
-        mLinearLayout = (LinearLayout)findViewById(R.id.pageind);
-        pagecount = mCustomFragmentPagerAdapter.getCount();
-        mImages = new ImageView[pagecount];
-        for (int i = 0; i < pagecount; i++) {
-            mImages[i] = new ImageView(this);
-            mImages[i].setPadding(8, 8, 8, 8);
-            mImages[i].setImageDrawable(getResources().getDrawable(R.drawable.unselect));
+    //To set PageIndicators to the ViewPager Fragments.
+    private void setPageIndicators()
+        {
+            mLinearLayout = (LinearLayout)findViewById(R.id.pageind);
+            mPageCount = mCustomFragmentPagerAdapter.getCount();
+            mImages = new ImageView[mPageCount];
+            mImagePadding = (int) (getResources().getDimension(R.dimen.image_padding)/getResources().getDisplayMetrics().density);
+            mMargin = (int) (getResources().getDimension(R.dimen.Linearlayout_margin)/getResources().getDisplayMetrics().density);
+            mNoMargin = (int) (getResources().getDimension(R.dimen.Linearlayout_nomargin)/getResources().getDisplayMetrics().density);
+            for (int i = 0; i < mPageCount; i++) {
+                mImages[i] = new ImageView(this);
+                mImages[i].setPadding(mImagePadding, mImagePadding, mImagePadding, mImagePadding);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    mImages[i].setImageDrawable(getResources().getDrawable(R.drawable.unselect, getApplicationContext().getTheme()));
+                } else {
+                    mImages[i].setImageDrawable(getResources().getDrawable(R.drawable.unselect));
+                }
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT
-            );
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                );
+                params.setMargins(mMargin, mNoMargin, mMargin, mNoMargin);
+                params.gravity = (Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+                mLinearLayout.addView(mImages[i], params);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mImages[0].setImageDrawable(getResources().getDrawable(R.drawable.select,getApplicationContext().getTheme()));
 
-            params.setMargins(4, 0, 4, 0);
-            params.gravity = (Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-            mLinearLayout.addView(mImages[i], params);
+            } else {
+                mImages[0].setImageDrawable(getResources().getDrawable(R.drawable.select));
+            }
         }
-
-        mImages[0].setImageDrawable(getResources().getDrawable(R.drawable.select));
-    }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -135,12 +148,12 @@ private void setPageIndicators()
     @Override
     public void onPageSelected(int position) {
 
-        for (int i = 0; i < pagecount; i++) {
+        for (int i = 0; i < mPageCount; i++) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mImages[i].setImageDrawable(getResources().getDrawable(R.drawable.unselect, getApplicationContext().getTheme()));
             } else {
                 mImages[i].setImageDrawable(getResources().getDrawable(R.drawable.unselect));
-}
+            }
 
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

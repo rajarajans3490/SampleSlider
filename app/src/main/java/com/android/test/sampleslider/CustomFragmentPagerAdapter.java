@@ -27,9 +27,9 @@ public class CustomFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 1:return ViewPageFragment2.newInstance();
             case 2:return ViewPageFragment3.newInstance();
             case 3:return ViewPageFragment4.newInstance();
-
+            default:break;
         }
-        return null;
+      return null;
     }
 
 }
